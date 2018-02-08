@@ -1,8 +1,32 @@
 {
-    "name": "com.phonegap.pushpushdemo",
-    "version": "1.0.0",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "com.phonegap.pushpushdemo",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "displayName": "PushPushDemo",
+  "dependencies": {
+    "cordova-android": "^6.3.0",
+    "cordova-browser": "^5.0.3",
+    "cordova-plugin-console": "~1.0.3",
+    "cordova-plugin-dialogs": "~1.2.1",
+    "cordova-plugin-statusbar": "~2.1.3",
+    "cordova-plugin-whitelist": "~1.2.1",
+    "phonegap-plugin-push": "~1.8.0"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-statusbar": {},
+      "phonegap-plugin-push": {
+        "SENDER_ID": "1:123894434698:android:7be83ad799dc0db0"
+      },
+      "cordova-plugin-console": {},
+      "cordova-plugin-dialogs": {},
+      "cordova-plugin-whitelist": {}
     },
-    "displayName": "PushPushDemo"
+    "platforms": [
+      "browser",
+      "android"
+    ]
+  }
 }
