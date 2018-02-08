@@ -18,28 +18,28 @@
  */
 var app = {
     // Application Constructor
-    initialize: function() {
+    initialize: function () {
         this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
+    bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
+    onDeviceReady: function () {
         console.log('Received Device Ready Event');
         console.log('calling setup push');
         console.log(window);
         document.getElementById('platform').innerHTML = cordova.platformId;
         app.setupPush();
     },
-    setupPush: function() {
+    setupPush: function () {
         console.log('calling push init');
         var push = PushNotification.init({
             "android": {
@@ -57,7 +57,7 @@ var app = {
         });
         console.log('after init');
 
-        push.on('registration', function(data) {
+        push.on('registration', function (data) {
             console.log('registration event: ' + data.registrationId);
             document.getElementById('regisid').innerHTML = data.registrationId;
             alert(data.registrationId);
@@ -76,18 +76,34 @@ var app = {
             receivedElement.setAttribute('style', 'display:block;');
         });
 
-        push.on('error', function(e) {
+        push.on('error', function (e) {
             console.log("push error = " + e.message);
         });
 
-        push.on('notification', function(data) {
+        push.on('notification', function (data) {
             console.log('notification event');
+            console.log(data);
+            document.getElementById('regisid').innerHTML = data;
+
             navigator.notification.alert(
                 data.message,         // message
                 null,                 // callback
                 data.title,           // title
                 'Ok'                  // buttonName
             );
-       });
+        });
+
+        // push.on('data', function (data) {
+        //     console.log('notification event');
+        //     console.log(data);
+        //     document.getElementById('regisid').innerHTML = data;
+
+        //     navigator.notification.alert(
+        //         data.message,         // message
+        //         null,                 // callback
+        //         data.title,           // title
+        //         'Ok'                  // buttonName
+        //     );
+        // });
     }
 };
