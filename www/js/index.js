@@ -38,6 +38,9 @@ var app = {
         console.log(window);
         document.getElementById('platform').innerHTML = cordova.platformId;
         app.setupPush();
+
+        
+        
     },
     setupPush: function () {
         console.log('calling push init');
@@ -60,6 +63,7 @@ var app = {
         push.on('registration', function (data) {
             console.log('registration event: ' + data.registrationId);
             document.getElementById('regisid').innerHTML = data.registrationId;
+
             alert(data.registrationId);
             var oldRegId = localStorage.getItem('registrationId');
             if (oldRegId !== data.registrationId) {
@@ -83,7 +87,7 @@ var app = {
         push.on('notification', function (data) {
             console.log('notification event');
             console.log(data);
-            document.getElementById('regisid').innerHTML = data;
+            document.getElementById('regisid').innerHTML = JSON.stringify(data);
 
             navigator.notification.alert(
                 data.message,         // message
@@ -93,17 +97,5 @@ var app = {
             );
         });
 
-        // push.on('data', function (data) {
-        //     console.log('notification event');
-        //     console.log(data);
-        //     document.getElementById('regisid').innerHTML = data;
-
-        //     navigator.notification.alert(
-        //         data.message,         // message
-        //         null,                 // callback
-        //         data.title,           // title
-        //         'Ok'                  // buttonName
-        //     );
-        // });
     }
 };

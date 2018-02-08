@@ -106,6 +106,6 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <engine name="browser" spec="~5.0.3" />
     <engine name="android" spec="~6.3.0" />
+    <engine name="browser" spec="~5.0.3" />
 </widget>
