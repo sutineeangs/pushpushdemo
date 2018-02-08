@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "123894434698",
+    "firebase_url": "https://fir-pushpushdemo.firebaseio.com",
+    "project_id": "firebase-pushpushdemo",
+    "storage_bucket": "firebase-pushpushdemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123894434698:android:7be83ad799dc0db0",
+        "android_client_info": {
+          "package_name": "com.phonegap.pushpushdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123894434698-jhrbjd5g79j856fahvfjk2ac4u3s4nbu.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "123894434698-p0u5a6ve4utschjpa20mvshcc1mhkqv0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd2xOpw88ZmBERZC-Ht7YOIbzvMCl0od0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
