@@ -40,7 +40,6 @@
         <splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
         <resource-file src="google-services.json" target="google-services.json" />
-        <preference name="android-minSdkVersion" value="15" />
     </platform>
     <platform name="ios">
         <icon height="57" platform="ios" src="www/res/icon/ios/icon.png" width="57" />
@@ -106,6 +105,6 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <engine name="android" spec="~6.3.0" />
     <engine name="browser" spec="~5.0.3" />
+    <engine name="android" spec="~6.3.0" />
 </widget>

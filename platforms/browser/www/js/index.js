@@ -39,8 +39,8 @@ var app = {
         document.getElementById('platform').innerHTML = cordova.platformId;
         app.setupPush();
 
-        
-        
+
+
     },
     setupPush: function () {
         console.log('calling push init');
@@ -89,13 +89,62 @@ var app = {
             console.log(data);
             document.getElementById('regisid').innerHTML = JSON.stringify(data);
 
-            navigator.notification.alert(
-                data.message,         // message
-                null,                 // callback
-                data.title,           // title
-                'Ok'                  // buttonName
-            );
+        
+
+            var title;
+            var msg;
+            if (data.title) {
+                title = data.title;
+                msg = data.message;
+            } else if (data.additionalData["pinpoint.notification.title"]) {
+                title = data.additionalData["pinpoint.notification.title"];
+                msg = data.additionalData["pinpoint.notification.body"];
+            } else {
+                msg = data.message;
+            }
+
+            if(data.additionalData){
+                navigator.notification.alert(
+                    msg,         // message
+                    null,                 // callback
+                    title,           // title
+                    'Ok'                  // buttonName
+                );
+            }
+   
         });
+
+        // var msg1 = {
+        //     "message": "hi angang",
+        //     "additionalData": {
+        //         "google.message_id": "0:1518080052371131%811191f0f9fd7ecd",
+        //         "coldstart": false,
+        //         "foreground": true
+        //     }
+        // }
+
+        // var msg2 = {
+        //     "title": "PushPushDemo",
+        //     "message": "hi ang2",
+        //     "additionalData": {
+        //         "google.message_id": "0:1518080140642390%811191f0f9fd7ecd",
+        //         "coldstart": false,
+        //         "foreground": false
+        //     }
+        // }
+
+        // var msg3 = {
+        //     "additionalData": {
+        //         "pinpoint.openApp": "true",
+        //         "pinpoint.notification.title": "test1",
+        //         "pinpoint.notification.body": "Hi angstrom1",
+        //         "pinpoint.campaign.campaign_id": "_DIRECT",
+        //         "google.message_id": "0:1518080210403754%811191f0f9fd7ecd",
+        //         "coldstart": false,
+        //         "pinpoint.notification.silentPush": "0",
+        //         "foreground": true
+        //     }
+        // }
 
     }
 };
