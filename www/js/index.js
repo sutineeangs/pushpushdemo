@@ -84,40 +84,38 @@ var app = {
             console.log("push error = " + e.message);
         });
 
-        push.on('notification').subscribe((notification) => {
-            console.log('Received a notification', notification);
-            document.getElementById('regisid').innerHTML = JSON.stringify(notification);
+        push.on('notification', function (data) {
+            console.log('notification event');
+            console.log(data);
+            document.getElementById('regisid').innerHTML = JSON.stringify(data);
+
+
+
+            var title;
+            var msg;
+            if (data.title) {
+                title = data.title;
+                msg = data.message;
+            } else if (data.additionalData["pinpoint.notification.title"]) {
+                title = data.additionalData["pinpoint.notification.title"];
+                msg = data.additionalData["pinpoint.notification.body"];
+            } else {
+                msg = data.message;
+            }
+
+            if (data.additionalData) {
+                navigator.notification.alert(
+                    msg,         // message
+                    null,                 // callback
+                    title,           // title
+                    'Ok'                  // buttonName
+                );
+            }
+
+        }, function (err) {
+            document.getElementById('regisid').innerHTML = JSON.stringify(err);
+
         });
-
-        // push.on('notification', function (data) {
-        //     console.log('notification event');
-        //     console.log(data);
-        //     document.getElementById('regisid').innerHTML = JSON.stringify(data);
-
-
-
-        //     var title;
-        //     var msg;
-        //     if (data.title) {
-        //         title = data.title;
-        //         msg = data.message;
-        //     } else if (data.additionalData["pinpoint.notification.title"]) {
-        //         title = data.additionalData["pinpoint.notification.title"];
-        //         msg = data.additionalData["pinpoint.notification.body"];
-        //     } else {
-        //         msg = data.message;
-        //     }
-
-        //     if (data.additionalData) {
-        //         navigator.notification.alert(
-        //             msg,         // message
-        //             null,                 // callback
-        //             title,           // title
-        //             'Ok'                  // buttonName
-        //         );
-        //     }
-
-        // });
 
         // var msg1 = {
         //     "message": "hi angang",
